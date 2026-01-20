@@ -1,65 +1,62 @@
-import Image from "next/image";
+import Navbar from '@/components/Navbar';
+import ProjectCard from '@/components/ProjectCard';
+import { MOCK_PROJECTS } from '@/lib/mockData';
+import Link from 'next/link';
 
 export default function Home() {
+  const featuredProjects = MOCK_PROJECTS.slice(0, 3);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans">
+      <Navbar />
+
+      {/* Hero Section */}
+      <section className="bg-white py-20 px-4">
+        <div className="container mx-auto text-center max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[#002E5D] mb-6">
+            Research at the Speed of Trust.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg text-gray-600 mb-8">
+            The BYU Hub is a centralized platform connecting students with mentored research opportunities across campus. Join the network of builders, researchers, and innovators.
           </p>
+          <div className="flex justify-center gap-4">
+            <Link href="/research" className="px-6 py-3 bg-[#002E5D] text-white rounded font-medium hover:bg-blue-900">
+              Browse Projects
+            </Link>
+            <div className="flex items-center gap-2">
+               {/* Waitlist dummy button */}
+               <button className="px-6 py-3 border border-gray-300 rounded font-medium hover:bg-gray-50">
+                 Join Waitlist
+               </button>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Sponsors Marquee (Simplified for CSS) */}
+      <section className="py-8 bg-gray-100 overflow-hidden">
+        <p className="text-center text-gray-400 text-sm mb-4 font-semibold uppercase tracking-widest">Supported By</p>
+        <div className="flex justify-center gap-12 opacity-50 grayscale font-bold text-xl text-gray-500 flex-wrap px-4">
+          <span>BYU MARRIOTT SCHOOL</span>
+          <span>INTERMOUNTAIN HEALTH</span>
+          <span>BYU SCHOOL OF MEDICINE</span>
+          <span>ALCSI</span>
         </div>
-      </main>
+      </section>
+
+      {/* Spotlight Section */}
+      <section className="py-16 container mx-auto px-4">
+        <h2 className="text-2xl font-bold text-[#002E5D] mb-8">Featured Research</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredProjects.map((p) => (
+            <ProjectCard key={p.id} project={p} />
+          ))}
+        </div>
+      </section>
+      
+      <footer className="bg-[#002E5D] text-white py-8 text-center">
+        <p>&copy; 2026 The BYU Hub. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
