@@ -40,7 +40,7 @@ export default function Home() {
   <br />
   <br />
   If you are a student considering preprofessional programs, such as MD, MHA, MBA, or MPH, this is a great way to gain real experience. 
-  Register this fall for <span className="text-blue-600 font-bold">HL 385R</span> to join, and join the waitlist to get started now.
+  Join the waitlist below, and register for <span className="text-blue-600 font-bold">HL 385R</span> this fall semester to join the 1st cohort!
 </motion.p>
 
           <motion.div 
