@@ -34,3 +34,23 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+/* Print styles for flyers */
+@media print {
+  @page {
+    size: letter;
+    margin: 0;
+  }
+
+  html, body {
+    width: 8.5in;
+    height: 11in;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+  }
+
+  body {
+    background-image: none !important;
+  }
+}
